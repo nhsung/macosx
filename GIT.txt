@@ -1,0 +1,7 @@
+brew install diff-so-fancy
+
+# configure
+git config --global color.diff-highlight.oldNormal "red"
+git config --global color.diff-highlight.oldHighlight "red 217"
+git config --global color.diff-highlight.newNormal "green"
+git config --global color.diff-highlight.newHighlight "green 157"

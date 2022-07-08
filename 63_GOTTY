@@ -1,0 +1,3 @@
+brew install yudai/gotty/gotty
+
+alias gotty='gotty --port 54321 --permit-write --reconnect zsh'

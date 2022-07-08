@@ -1,0 +1,30 @@
+# OS version check
+#> sw_vers -productVersion
+11.4
+or
+#> system_profiler SPSoftwareDataType | grep "System Version"
+     System Version: macOS 11.4 (20F71)
+
+
+## NFS mount on-demand
+mkdir ~/NFS_DATA
+
+#> sudo showmount -e 192.168.25.102
+Password:
+Exports list on 192.168.25.102:
+/volume1/music 192.168.25.0/24
+/volume1/NFS_DATA 192.168.25.0/24
+
+#> sudo mount -t nfs -o resvport,rw,nfc 192.168.25.102:/volume1/NFS_DATA ./NFS_DATA
+
+#❯ df | grep NFS_DATA
+192.168.25.102:/volume1/NFS_DATA 9604421808 6877576960 2726607280 72% 1389793 303549215 0% /Users/nhsung/NFS_DATA
+
+
+## NFS mount with configuartion
+sudo su -
+cat >> /etc/fstab << END
+192.168.25.102:/volume1/NFS_DATA /Users/nhsung/NFS_DATA nfs rw
+END
+
+df | grep NFS_DATA

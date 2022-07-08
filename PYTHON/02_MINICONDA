@@ -1,0 +1,49 @@
+#### SETUP
+# Downalod & Install conda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
+chmod 755 ./Miniconda3-latest-MacOSX-arm64.sh
+
+# Version
+conda -V
+
+# Update conda itself
+conda update conda
+or
+conda update -n base conda
+or
+conda update --all
+
+
+#### VIRTUAL ENV
+# List virtual env
+conda env list
+
+# List virtual env
+conda create -n python-3.8.11 python==3.8.11
+conda env list
+
+# Activate virtual env
+conda activate python-3.8.11
+
+# DeActivate virtual env
+conda deactivate
+
+# Eliminate virtual env
+conda env remove -n python-3.8.11
+
+# Export virtual env
+conda env export > export.yaml
+
+# Import virtual env
+conda env create -f export.yaml
+
+# Turnoff auto activation
+conda config --set auto_activate_base false
+
+
+#### PKG
+# list packages
+conda list
+
+# list packages in virtual env
+pip freeze

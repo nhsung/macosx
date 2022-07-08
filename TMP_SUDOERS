@@ -1,0 +1,4 @@
+echo -e "\n$USER ALL=(ALL) NOPASSWD: ALL\n" | sudo tee -a /etc/sudoers
+
+# CHECK
+sudo -l

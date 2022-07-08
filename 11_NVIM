@@ -1,0 +1,28 @@
+## VIM-PLUG
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+nvim +PlugInstall
+
+
+## COC
+# Node
+brew install node
+# Yarn
+curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+# Coc Module
+vi
+CocInstall coc-pyright coc-python coc-pypl coc-sh coc-json coc-yaml coc-html coc-xml coc-docker
+# Language Server - https://woonizzooni.tistory.com/entry/MacOS-환경에서-vim-환경-설정
+
+:CocConfig
+....
+{
+  "yaml.schemas": {
+      "kubernetes": "/*.yaml"
+  }
+}
+
+cd ~/.vim/plugged/coc.nvim
+yarn install
+yarn build

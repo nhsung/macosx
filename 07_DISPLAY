@@ -1,0 +1,5 @@
+# Install XQuartz
+brew install --casks xquartz
+
+# xterm
+ssh -X rj xterm

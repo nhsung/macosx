@@ -1,0 +1,45 @@
+## clipboard on MAC for VIM & TMUX copy
+brew install reattach-to-user-namespace
+vi ~/.tmux.conf
+
+# use MAC OS X clipboard
+set -g default-command "reattach-to-user-namespace -l zsh"
+
+# use LINUX OS X clipboard -  sudo apt install xclip
+# bind -t vi-copy y copy-pipe "xclip -sel clip -i"
+
+
+## TMUX PLUGIN MANAGER INSTALL - https://github.com/tmux-plugins/list
+mkdir -p ~/.tmux/plugins/
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+vi .tmux.conf
+....
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'jooize/tmux-powerline-theme'
+....
+
+## TMUX Plugin Install
+crtl + a + I
+
+## TMUXINATTOR
+tmuxinator new K8S_DISNEYLAND
+tmuxinator open K8S_DISNEYLAND
+cd ~/.tmuxinator/
+tmuxinator list
+tmuxinator start
+tmuxinator copy A B
+tmuxinator delete A
+# Linux
+set -g @continuum-boot 'on'
+# Mac
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'iterm,fullscreen'
+
+## TMUX
+tmux
+tmux new -s [session]
+tmux a   -t [session]
+tmux ls
+# CHECK RUNNING TMUX CONFIGURATION
+tmux show -g | sed 's/^/set-option -g /' > ~/.tmux.current.conf

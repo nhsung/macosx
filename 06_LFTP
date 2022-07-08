@@ -1,0 +1,8 @@
+## BookMark
+cd /Users/nhsung/.local/share/lftp
+
+#> cat bookmarks
+last    ""
+mbp    ftp://nasung:Jaehoon1!!@192.168.25.24/
+nas    ftp://nhsung:Retina1!@192.168.25.102/
+.....

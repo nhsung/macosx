@@ -1,0 +1,82 @@
+# https://dashboard.ngrok.com
+
+#❯ ngrok authtoken 2sMUCrgsRNeYpH14ZBmeW_5TSUrb1wHrLZJAtNvuZTY
+Authtoken saved to configuration file: /Users/nhsung/.ngrok2/ngrok.yml
+
+#❯ cat ~/.ngrok2/ngrok.yml
+authtoken: 2sMUCrgsRNeYpH14ZBmeW_5TSUrb1wHrLZJAtNvuZTY
+
+# with configuration file
+ngrok start --region us --all
+# configuation file
+#
+❯ cat ~/.ngrok2/ngrok.yml
+authtoken: 2sMUCrgsRNeYpH14ZBmeW_5TSUrb1wHrLZJAtNvuZTY
+region: ap
+console_ui: true
+web_addr: localhost:4040
+
+tunnels:
+  ssh:
+    proto: tcp
+    addr: 22
+
+
+
+## !!!
+## CHECK Current Binding, SSH -> DASHBOARD -> Endpoints -> Status -> TCP
+# SSH
+ngrok tcp 22
+# RDP
+ngrok tcp 3389
+...
+ssh -p 16985 cloud-user@0.tcp.ap.ngrok.io
+
+
+
+# Configuration
+# Example configuration file with all options
+authtoken: 4nq9771bPxe8ctg7LKr_2ClH7Y15Zqe4bWLWF9p
+region: us
+console_ui: true
+http_proxy: false
+inspect_db_size: 50000000
+log_level: info
+log_format: json
+log: /var/log/ngrok.log
+metadata: '{"serial": "00012xa-33rUtz9", "comment": "For customer alan@example.com"}'
+root_cas: trusted
+socks5_proxy: "socks5://localhost:9150"
+update: false
+update_channel: stable
+web_addr: localhost:4040
+tunnels:
+  website:
+    addr: 8888
+    auth: bob:bobpassword
+    bind_tls: true
+    host_header: "myapp.dev"
+    inspect: false
+    proto: http
+    subdomain: myapp
+
+  e2etls:
+    addr: 9000
+    proto: tls
+    hostname: myapp.example.com
+    crt: example.crt
+    key: example.key
+
+  ssh-access:
+    addr: 22
+    proto: tcp
+    remote_addr: 1.tcp.ngrok.io:12345
+
+# Region
+us - United States (Ohio) - default
+eu - Europe (Frankfurt)
+ap - Asia/Pacific (Singapore)
+au Australia (Sydney)
+sa - South America (Sao Paulo)
+jp Japan (Tokyo)
+in - India (Mumbai)

@@ -1,0 +1,25 @@
+cd ~
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+ranger --copy-config=all
+echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
+
+## KEY BINDING
+i → 파일을 표시합니다.
+r → 선택한 프로그램으로 파일을 엽니 다.
+cw → 파일 이름 변경.
+/ → 파일 찾기 (n | p 다음 / 이전 일치 항목으로 이동).
+p → 파일 붙여 넣기.
+space → 현재 파일을 선택합니다.
+: delete → 선택한 파일을 삭제합니다.
+: mkdir → 디렉토리를 만듭니다.
+: touch → 파일 생성
+: rename → 파일 이름 바꾸기.
+
+copy & move - yy / dd 
+copy & move with bucket - ya / da
+paste       - pp
+
+:bulkrename
+
+# Summary
+https://bit.ly/3DWjWLs

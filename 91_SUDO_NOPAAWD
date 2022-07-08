@@ -1,0 +1,4 @@
+sudo visudo
+....
+#%admin ALL=(ALL) ALL
+%admin ALL=(ALL) NOPASSWD: ALL

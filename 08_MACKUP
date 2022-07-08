@@ -1,0 +1,76 @@
+## https://github.com/lra/mackup
+
+
+## CLI Usage
+# Install Mackup
+brew install mackup
+
+# Launch it and back up your files
+mackup backup
+
+# Launch it and restore your files
+mackup restore
+
+# Copy back any synced config file to its original place.
+mackup list
+
+# Display the list of applications supported by Mackup.
+mackup -h
+
+
+----
+## Configuration
+
+
+cat > ~/.mackup.cfg << END
+[storage]
+engine = icloud
+directory = Mackup.MAC
+
+#engine = google_drive
+# or
+#engine = dropbox
+# or
+#engine = file_system
+#path = some/folder/in/your/home
+
+
+## APP specific - include
+#[applications_to_sync]
+#ssh
+#adium
+
+## APP specific - not include
+#[applications_to_ignore]
+#ssh
+#adium
+END
+
+
+--
+## User-Specific App
+
+
+cat > .mackup/mackup.cfg << END
+[application]
+name = test
+
+[configuration_files]
+.test.cfg
+END
+
+
+--
+## Add support for an application using the XDG directory
+
+
+[application]
+name = Git
+
+[configuration_files]
+.gitconfig
+
+[xdg_configuration_files]
+git/config
+git/ignore
+git/attributes

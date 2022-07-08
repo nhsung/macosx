@@ -1,0 +1,40 @@
+#### RESTORE - SHELL SCRIPTS
+
+## CLI TOOL
+sudo xcodebuild -license
+xcode-select --install
+
+## SSH-KEY
+mkdir ~/.ssh && chmod 600 ~/.ssh
+cp -p ~/Library//Mobile\ Documents//com~apple~CloudDocs/Mackup.MAC/.ssh/id_rsa* ~/.ssh/
+
+## GIT CLONE
+git clone git@github.com:nhsung/dotfiles.git
+dotfiles/bootstrap.sh
+sync
+reboot
+makeup restore
+
+
+
+#### Bootstrap Scripts - bootstrap.sh
+
+# homebrew
+#!/bin/sh
+if test ! $(which brew); then
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+brew update
+brew tap homebrew/bundle
+brew bundle --file=~/Library//Mobile\ Documents//com~apple~CloudDocs/Mackup.MAC/Brewfile --force
+brew cleanup
+brew cleanup --casks
+
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# osx
+source ~/Library//Mobile\ Documents//com~apple~CloudDocs/Mackup.MAC/.osx
+
+# dotfiles
+cp -p ~/Library//Mobile\ Documents//com~apple~CloudDocs/Mackup.MAC/.mackup.cfg ~/.mackup.cfg

@@ -1,0 +1,27 @@
+## Install
+wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-308.0.0-darwin-x86_64.tar.gz?hl=ko
+or
+brew install --casks google-cloud-sdk
+cd /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk
+
+# Beta Interactive
+gcloud components install beta
+gcloud beta interactive
+
+# Compute
+gcloud components update
+
+gcloud auth logi # <---- Web Browser
+
+gcloud projects list
+gcloud config list
+
+gcloud config set project sturdy-mode-273810
+
+gcloud compute instances list
+gcloud compute config-ssh
+ssh free-vm.us-west1-a.sturdy-mode-273810
+
+
+
+## gcloud init

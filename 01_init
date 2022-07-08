@@ -1,0 +1,150 @@
+# ssh-keygen
+cd ~/.ssh && ssh-keygen -b 1024 -t rsa -f id_rsa -P ""
+
+## Xcode
+xcode-select --install
+
+## brew -  /usr/local/Cellar
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# CASKS & MAS
+brew install casks mas
+# Security - Identified Developers 
+sudo spctl --master-disable # MAC System Prefer... -> Allow apps downloaded from -> Anywhere
+#export HOMEBREW_CASK_OPTS=--no-quarantine in your ~/.profile
+sudo xattr -dr com.apple.quarantine /Applications/Sourcetree.app # for a indivisual app
+# off user-experience join program
+brew analytics off
+
+## All In One
+# backup list
+brew bundle dump
+# install using backup list
+# brew bundle --file ./xxxx
+brew bundle
+
+
+## colorls
+brew install ruby
+cd /opt/homebrew/Cellar/ruby/3.1.2/bin/
+gem install colorls
+ln -s /opt/homebrew/Cellar/ruby/bin/3.1.2/bin/colorls /usr/local/bin/colorls
+colorls --version
+
+## bashtop
+sudo python3 -m ensurepip
+sudo python3 -m pip install psutil
+python3 -m pip install psutil
+brew install bash coreutils gnu-sed git osx-cpu-temp
+git clone https://github.com/aristocratos/bashtop.git
+cd bashtop ; sudo make install
+cd .. ; rm -rf bashtop
+
+
+## APP - CLI
+brew install zsh antibody \
+neovim \
+expect ansible \
+tmux tmate ttyd yudai/gotty/gotty \
+go \
+tldr peco pastebinit neofetch entr\
+lftp axel \
+starship gotop exa fd ripgrep bat most \
+iproute2mac prettyping hudochenkov/sshpass/sshpass \
+k9s \
+cmatrix
+
+## APP - GUI
+brew install --casks iterm2 telegram \
+google-chrome firefox \
+visual-studio-code macvim \
+wireshark --with-qt \
+google-cloud-sdk
+
+# FONTS -> iTerm2, Pref -> Profiles -> Text -> Change Fonts  (...powerline)
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts ; ./install.sh
+# clean-up a bit
+cd .. ; rm -rf fonts
+
+brew tap homebrew/cask-fonts
+brew install --casks font-meslo-lg-nerd-font
+
+
+
+## zsh
+brew install zsh
+chsh -s $(which zsh)
+# oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# zsh plugins
+brew install getantibody/tap/antibody
+# command-not-found
+brew tap homebrew/command-not-found
+
+# xterm 24bit
+mkdir -p ~/.terminfo
+cat > ~/.xterm-24bit.terminfo << END
+xterm-24bit|xterm with 24-bit direct color mode,
+   use=xterm-256color,
+   sitm=\E[3m,
+   ritm=\E[23m,
+   setb24=\E[48;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
+   setf24=\E[38;2;%p1%{65536}%/%d;%p1%{256}%/%{255}%&%d;%p1%{255}%&%dm,
+END
+tic -x -o ~/.terminfo ~/.xterm-24bit.terminfo
+export TERM="xterm-24bit"
+
+# spaceship - Set ZSH_THEME="spaceship" in your .zshrc.
+git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme" 
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# vscode
+cmd + shft + p -> shell
+#> code
+
+# gtop
+brew install node
+npm install gtop -g
+
+## Troubleshooting
+#> ISSUE
+zsh compinit: insecure directories, run compaudit for list.
+Ignore insecure directories and continue [y] or abort compinit [n]? y
+#> Answer
+compaudit | xargs chmod g-w
+
+# enable lazy loading (autoloading)
+fpath=($fpath ~/.zfunc)
+autoload -Uz ~/.zfunc/**/*
+# disable lazy loading (autoloading)
+autoload -X
+
+# shortcut for function
+zle -N test
+bindkey '^e' test
+zle -autoloa
+
+
+## ROSETTA
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license
+
+
+## PLUGINS
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+
+git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git \
+  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting
+
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+
+git clone https://github.com/pierpo/fzf-docker ~/.oh-my-zsh/plugins/fzf-docker
+
+git clone https://github.com/wfxr/forgit ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/forgit

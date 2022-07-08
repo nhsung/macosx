@@ -1,0 +1,7 @@
+#> gist --login
+Requesting login parameters...
+Please sign in at https://github.com/login/device
+  and enter code: CEC7-A8F3
+Success! https://github.com/settings/connections/applications/4f7ec0d4eab38e74384e
+
+open https://github.com/login/device

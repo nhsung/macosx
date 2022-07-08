@@ -1,0 +1,7 @@
+brew install go
+go get -u go.coder.com/sshcode
+
+
+
+# Extension
+code --install-extension esbenp.prettier-vscode

@@ -1,0 +1,78 @@
+## list ANAXONDA DIR
+ls /opt/anaconda3/bin/conda
+export PATH=/opt/anaconda3/bin:$PATH
+## version
+conda --version
+## update
+# update conda itself
+conda update conda
+# update PYTHON packages
+conda update --all
+
+## Create Virtual ENV
+#conda search python
+conda create -n PYTHON_3.5 python=3.5.4 scipy=0.15.0 astroid babel
+or
+# withou defualt installed packages
+conda create --no-default-packages -n PYTHON_3.5 python=3.5.4
+python -V
+## Remove Virtual ENV
+# remove virtual env all
+conda env remove -n PYTHON_3.5
+or
+# remove only specified packages
+conda remove -n PYTHON_3.5 --all
+
+
+## Activate Virtual ENV
+conda activate PYTHON_3.5
+## DeActivate Virtual ENV
+conda deactivate
+## Clon Virtual ENV
+conda create -n [existing] -c [new]
+## Update package in virtual env
+conda update -n [name] [package]
+conda update --all
+## Clean
+conda clean --all
+
+
+## List Virtual ENV
+conda info --envs
+or
+conda env list
+
+
+## Export Virtual ENV
+conda env export > test_virutal_env.yml
+## Import Virtual ENV
+conda env create -f test_virutal_env.yml
+
+
+## Export PKG in Virtual ENV
+pip freeze > virtual_pip_list.txt
+## Import PKG in Virtual ENV
+pip install -r virtual_pip_list.txt
+#pip uninstall -r virtual_pip_list.txt
+
+
+## change python version in base
+conda install python=3.5.0
+
+
+
+#### in Virtual ENV
+#conda activate PYTHON_3.5
+conda install [pkg name]
+or
+conda install -n PYTHON_3.5 [pkgname]
+#conda install -c conda-forge jupyterlab
+#conda install -c conda-forge pylint
+conda uninstall [pkg name]
+conda update    [pkg name]
+conda remove    [pkg name]
+conda upgrade --all
+conda list
+
+## run Jupyter Notebook
+jupyter notebook

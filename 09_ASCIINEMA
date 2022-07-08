@@ -1,0 +1,7 @@
+# Installation
+curl -sL https://asciinema.org/install | sh
+asciinema auth
+# ~/.asciinema/config
+
+# Usage
+asciinema rec
